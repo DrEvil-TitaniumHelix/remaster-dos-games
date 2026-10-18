@@ -1,0 +1,5 @@
+# Lane: por-verify (Opus) — independent verification of FINAL pseudocode (areas you did not write)
+
+For each area file named in your prompt: (1) run `python -I decode/tools/argcheck.py` (fresh <AREA>_ARGCHECK.md) and `decode/tools/pseudo_check.py` (por-tooling's sampling helper); (2) independently re-read a 10% random statement sample (seeded, list the seed) against the asm listing; (3) targeted sweeps of the known error classes: call-argument order, signed vs unsigned compares (JL/JB, JG/JA), byte vs word operands, folded constant array indexes read as scalars, and/jge/neg = ABS idioms, Pascal set tests (`in`), string length-byte handling; (4) check every `<AREA>_SCREENS.md` row against the code and against acceptance/ref/DECODE_CHECKS.md where a capture exists.
+Output: ONLY `decode/pseudo/<AREA>_VERIFY.md` (sample table: address, statement, verdict AGREE/DISAGREE/UNSURE, evidence; sweep results; summary counts). Every DISAGREE goes as `<area> fix request #verify-n` into STATUS.md (directly below the title lines) for the owner; if the owner lane is gone, the Foreman reassigns.
+Commit per area `por-verify: <AREA>`; reply DONE at the end.
