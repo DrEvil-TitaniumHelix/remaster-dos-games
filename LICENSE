@@ -1,0 +1,6 @@
+This repository uses two licenses:
+
+- Code (everything under tools/, and any script or program file elsewhere): MIT License, see LICENSE-MIT.
+- Documentation (all Markdown files: README, METHOD, SCALING, COMPATIBILITY, CONTRIBUTING, profiles/, templates/, cases/): Creative Commons Attribution 4.0 International (CC BY 4.0), see LICENSE-DOCS.
+
+By sending a pull request you agree that your contribution is licensed the same way.

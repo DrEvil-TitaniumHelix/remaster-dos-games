@@ -1,0 +1,9 @@
+# Lane: por-build-<area> (Opus) — translate one VERIFIED area into game/areas/<area>.js
+
+Precondition: `decode/pseudo/<AREA>_VERIFY.md` exists and all its `#verify-n` fix requests are APPLIED.
+Read BUILD_PLAN.md, game/README.md (engine API, written by por-build-engine; may still be growing), decode/pseudo/<AREA>.pas.md + <AREA>_SCREENS.md + SCREENS_INDEX.md rows, GLOBALS.md, CROSSREF.md §3/§4.
+You own: game/areas/<area>.js (+ game/areas/<area>_*.js splits), game/test/<area>/*, the ACCEPTANCE.md rows of your screen ids (coordinate with por-build-engine, owner of the file: append rows via `acceptance request #n` if it prefers).
+Method: routine by routine from the .pas.md, `// seg:off` on every function, same control flow, same globals (state.js names), TP semantics via tp.js (Random, byte wrap, strings). Engine calls you need that do not exist yet: write an `engine request #n (<what>)` note in STATUS.md (directly below the title lines) and code against the requested name. Unknowns as TODO(decode).
+Do not trust the pseudocode blindly in these four places (decode/FABLE_CONFIRM.md §5): (1) any call written with a `{ push order }` comment: re-check against the callee's declaration (first pushed = first parameter); (2) prose-style menu loops (e.g. Camp): read the bytes for the extended-key/plain-key split and the exact colours; (3) index bases in table comments: use the SAVES.md layout; (4) very large (H) routines written by forked workers (e.g. CreateCharacter): re-read against the listing while translating.
+Acceptance: for each screen id: headless screenshot (engine's script) vs DOSBox reference (`ref request #n` to por-dosbox-ref if missing), `acceptance/ref/compare.py`; record in ACCEPTANCE.md.
+Commit per routine group `por-build-<area>: <what>`; STATUS block per milestone; no pausing between milestones. Never modify/commit originals; never `rm -f "$S/$g"`; no background polling loops; close headless Chrome after runs.
