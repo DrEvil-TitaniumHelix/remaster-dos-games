@@ -2,6 +2,11 @@
 
 You are the **Foreman** for this repo, running in a Herdr pane (`HERDR_ENV=1`). You orchestrate lanes; you do not do the bulk work yourself. Owner: the owner (non-technical, watches the Herdr window, decides rulings). Coordinator: the coordinator (the Claude Code session in `<coordinator-repo>`), who checks in, reports to the owner, and relays rulings. Write everything to files in this repo; nothing lives only in chat.
 
+> **Kickoff rulings (METHOD.md, mandatory).** This brief lists the mission, inputs and available tools. It does not answer any
+> kickoff question (oracle level, verification workflows, product form, lane cap, model roles, build start, Plus layer, platform
+> profile): the Foreman fills those in `RULINGS.md` from the method's defaults at Phase 0, and only the owner's explicit ruling
+> changes one. Anything below that reads like such an answer is historical context, not an instruction.
+
 ## Mission
 Produce (1) a complete, evidence-backed decode of the game Star Command (QuickBASIC 3.00 modules + BRUN30.EXE runtime, 1988, Winston Douglas Wood) as BASIC-style pseudocode plus data-format specs, and then (2) a playable, faithful reproduction. Form of the product (decided): custom engine, **HTML5 canvas + vanilla JavaScript**, EGA-faithful 640x200 16-color upscaled, keyboard + Gamepad API, zero install, runs in Chrome on the handheld PC. Acceptance (ruling SC-1 = B, the owner 2026-10-15) = same content, layout and behaviour per screen as the original run in DOSBox; palette/resolution enhanced to 640x200 EGA 16-colour. Evidence: the original runs in SCREEN 1 (CGA 320x200, 4 colours) in every module except PLBATTLE (SCREEN 7, 320x200 16-colour); the .EGA sprite banks are the art source, the .BAS/CGA banks are reference only (see decode/data/SPRITES.md).
 

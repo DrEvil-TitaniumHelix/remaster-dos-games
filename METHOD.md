@@ -76,6 +76,25 @@ Status legend: **proven** = done on a real game; **expected** = follows from the
 | 6. Plus layer (standard, `docs/PLUS_LAYER.md`) | the quality-of-life package behind one master switch: hooks (events, state, click regions), panel, full clickability with right-click, automatic notes, quests, encyclopedia with reveal-on-encounter, automap, helpers, mods/skins, game profile, cheat/scenario tools, QA harness | per package: player-visible rows PASS; the whole original regression table at 0 px with Plus mounted; nothing shipped that is not the player's own or decoded |
 | 7. Runtime-free product (optional) | when every module is native, drop the recompiled core: the revision-1 full rewrite (HTML5 or other engine) | every screen PASS vs reference |
 
+## Kickoff rulings (Phase 0, mandatory; revision 2026-10-28)
+The method decides these, not the brief. At kickoff the Foreman copies this table into `RULINGS.md`, fills every row with the
+method default, and changes a row only on the owner's explicit ruling. **A FOREMAN brief never pre-answers a kickoff question**:
+a brief lists the mission, the inputs and the tools that are *available*; if a brief states a kickoff answer (for example names an
+emulator as "the oracle"), the method default wins and the Foreman records the conflict in RULINGS.md. First paid for on The
+Goonies (C64, 2026-10-28): the brief declared VICE the oracle, the survey lane launched emulators the method says are optional.
+
+| # | Question | Method default | Where defined |
+|---|---|---|---|
+| K1 | Oracle level | **none** (the remake plays itself) | Acceptance; The oracle |
+| K2 | Verification workflows | bot trials after every change; full playthrough before any release is called complete | Acceptance |
+| K3 | Product form | HTML5 canvas + vanilla JavaScript, no framework, no build step, BYOC importer | Product form |
+| K4 | Lane cap | by free RAM (1.5 GB per CLI lane, floor as SCALING.md) | SCALING.md |
+| K5 | Model roles | as the Models section; no per-token billing | Models |
+| K6 | Build start | immediately when DECODE_GATE.md is MET, no further go-ahead | Phases and gates |
+| K7 | Plus layer | after acceptance, as a separate phase | The Plus layer |
+| K8 | Platform profile | the platform's profile under `platforms/` if one exists; DOS x86 is the reference | Target suitability |
+| K9 | Orchestration | Herdr: one persistent Foreman pane per repo, lanes as CLI panes reshaped from the repo files, visible to the owner, surviving any one session; in-process sub-agents only on the owner's ruling | ARCHITECTURE.md |
+
 ## The Plus layer (standard since 2026-10-19; first built as Gold Box Plus on Pool of Radiance)
 - Three layers: the engine only emits events and registers click regions; one hooks file (bus, read-only state, regions, master switch); every feature in `plus/`, writing only its own store. Input stays a key synthesizer, so "Play the original game" is provable: the full regression table at 0 px with everything mounted.
 - The hook contract, the fourteen packages, their order and the traps are in `docs/PLUS_LAYER.md`. Port the contract first; the emit sites are the only per-game engine work.

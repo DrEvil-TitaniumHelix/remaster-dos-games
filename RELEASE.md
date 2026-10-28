@@ -83,6 +83,12 @@ personal identity), so `--existing` replaces `gh repo create` with: add the remo
 clean commit replaces the old history), and `gh repo edit … --visibility public --accept-visibility-change-consequences`.
 Both are irreversible in effect and run only with the owner's explicit approval.
 
+**Amendment 2026-10-28 (owner ruling, v0.2.3):** for this method repo the public history is *clean commits only*, not
+*one* commit: each release is a new clean commit on top of the previous public commit, pushed fast-forward
+(`git push origin main`, no `--force`). The working history still never leaves the machine. Reason: the force-push
+was refused by the agent's permission classifier on both machines; a fast-forward of a gated clean commit leaks
+nothing and keeps every version tag on its own commit.
+
 **Known GitHub delay after a visibility change.** Right after `gh repo edit --visibility public`, GitHub can answer
 `HTTP 403: Repository has been locked` for a short time (first release, 2026-10-18: the label step failed, a manual
 retry about 30 s later succeeded). With `--existing`, `release.py` therefore retries every step after the visibility
