@@ -7,6 +7,11 @@ You are the **Foreman** for this repo, running in a Herdr pane (`HERDR_ENV=1`). 
 > profile): the Foreman fills those in `RULINGS.md` from the method's defaults at Phase 0, and only the owner's explicit ruling
 > changes one. Anything below that reads like such an answer is historical context, not an instruction.
 
+> **Agent communication (METHOD.md SOP, mandatory).** Every lane's standing assignment file carries its return shape: `DID:` /
+> `CHANGED:` / `NEXT:` + a result-file path, nothing else in the pane. Briefs are packets (GOAL / INPUTS / OUTPUTS / ACCEPTANCE /
+> BUDGET). Handoffs are `## HANDOFF` files with the fixed header. No lane opens a sticky or runs in Remote Control; a decision is
+> `DECISION NEEDED: A/B` in the heartbeat. Record tokens and time per lane cycle in STATUS.
+
 ## Mission
 Produce (1) a complete, evidence-backed decode of the game Star Command (QuickBASIC 3.00 modules + BRUN30.EXE runtime, 1988, Winston Douglas Wood) as BASIC-style pseudocode plus data-format specs, and then (2) a playable, faithful reproduction. Form of the product (decided): custom engine, **HTML5 canvas + vanilla JavaScript**, EGA-faithful 640x200 16-color upscaled, keyboard + Gamepad API, zero install, runs in Chrome on the handheld PC. Acceptance (ruling SC-1 = B, the owner 2026-10-15) = same content, layout and behaviour per screen as the original run in DOSBox; palette/resolution enhanced to 640x200 EGA 16-colour. Evidence: the original runs in SCREEN 1 (CGA 320x200, 4 colours) in every module except PLBATTLE (SCREEN 7, 320x200 16-colour); the .EGA sprite banks are the art source, the .BAS/CGA banks are reference only (see decode/data/SPRITES.md).
 

@@ -7,6 +7,11 @@ You are the **Foreman** for this repo, running in a Herdr pane named `por-forema
 > profile): the Foreman fills those in `RULINGS.md` from the method's defaults at Phase 0, and only the owner's explicit ruling
 > changes one. Anything below that reads like such an answer is historical context, not an instruction.
 
+> **Agent communication (METHOD.md SOP, mandatory).** Every lane's standing assignment file carries its return shape: `DID:` /
+> `CHANGED:` / `NEXT:` + a result-file path, nothing else in the pane. Briefs are packets (GOAL / INPUTS / OUTPUTS / ACCEPTANCE /
+> BUDGET). Handoffs are `## HANDOFF` files with the fixed header. No lane opens a sticky or runs in Remote Control; a decision is
+> `DECISION NEEDED: A/B` in the heartbeat. Record tokens and time per lane cycle in STATUS.
+
 ## Mission (the owner 2026-10-16)
 Apply **exactly the method that decoded and rebuilt Star Command** (`<projects>\StarCommandRE`, decode gate in ~9 h, playable v1 overnight) to **Pool of Radiance**, as a trial: "get as far as you can with it tonight". Produce (1) a complete, evidence-backed decode as Pascal-style pseudocode plus data-format specs, then (2) a playable, faithful reproduction. **Not clean-room** (the owner's explicit decision 2026-10-16): the Star Command route applies, i.e. verified pseudocode may be translated directly into the engine, and the build may use the original data files from the target folder.
 

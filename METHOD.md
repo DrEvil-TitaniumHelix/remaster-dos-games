@@ -127,9 +127,35 @@ Goonies (C64, 2026-10-28): the brief declared VICE the oracle, the survey lane l
 - Fable: optional bounded spot-check (~1% of the weekly budget). Never more than the owner allows; stop at 90% weekly.
 - Never per-token API billing.
 
+## Agent communication (SOP, revision 2026-11-02; the owner, via the Gold Box graph)
+Agents are not humans: a coordinator that reads narration pays tokens and time for nothing, and free-text handoffs grow until the
+next agent summarises the summary. Binding for every Foreman and every lane.
+1. **The return shape lives in the STANDING definition** (`herdr/assignments/<lane>.md`, `roles/*.md`, FOREMAN.md), never only in
+   a call-time brief. "Be brief" at call time is ignored.
+2. **Brief = packet with fixed fields:** GOAL; INPUTS (exact paths, addresses, seeds, commits); OUTPUTS (exact files + fields);
+   ACCEPTANCE (the check that proves it); BUDGET. No narrative, no motivation.
+3. **Return = three capped lines + a path:** `DID: <one line>` / `CHANGED: <file names only>` / `NEXT: <only if there is one; "read
+   <file>" when the detail matters>`. Everything else goes into the result file; the coordinator opens it only when NEXT says so.
+4. **Those three lines ARE the heartbeat and the STATUS line.** No separate "summarise what you did" step; a lane never reads its own
+   log back (it cannot pad it to look busy).
+5. **Detail level is set per task class by the Foreman:** decode / disassembly / oracle work gets MORE (addresses, byte values, exact
+   repro commands, frame numbers); everything else one line per fact.
+6. **Reads go through files** (STATUS, result file, commits). A pane is read only to confirm a lane is alive, through a filter that
+   strips CLI chrome; each CLI's documented tips/hints setting is turned off in the lane launch settings (verify in that CLI's docs,
+   never guess). Never ask a lane a question a file answers.
+   Claude Code lanes: `"spinnerTipsEnabled": false` in the lane settings file passed with `--settings` (the same file that carries `remoteControlAtStartup: false`; key per code.claude.com/docs/en/settings-reference), and machine reads use `claude -p --output-format json` (or `stream-json`, needs `--verbose`) rather than a pane scrape.
+7. **Handoffs** (lane to lane, session to session) = a file with a fixed header (`## HANDOFF` block: STATE / DONE / OPEN / NEXT /
+   FILES) that the next agent takes as its first input.
+8. **Ask whether the task needs a lane at all.** Lanes pay off for read-heavy, isolated work, not for what the Foreman can do in place.
+9. **No agent opens a sticky/popup or runs in Remote Control** (standing rule 2026-10-30). A Foreman decision = `DECISION NEEDED:
+   A/B + trade-off` in its heartbeat; the coordinator carries it to the owner in the sticky window.
+10. **Measure it:** tokens and time per lane cycle before and after adoption, recorded in STATUS. Expected effect is cost, not
+    quality: more lane cycles per hour and per budget, fewer misreads, handoffs that do not drift.
+
 ## File protocol (non-negotiable)
 - `FOREMAN.md` brief; `STATUS.md` newest first, one block per lane result, `## HANDOFF` before any pause; `RULINGS.md` (one question, A/B, recommendation first); `REPRODUCE_GATE.md` (Phase 2 smoke and Phase 3 lock-step results); `DECODE_GATE.md` per module; `BUILD_PLAN.md`; `ACCEPTANCE.md`.
 - `herdr/assignments/<lane>.md` for every lane; results only in files; commit after every result (`<lane>: <what>`).
+- Lane return = `DID` / `CHANGED` / `NEXT` + a result-file path (Agent communication SOP above); the same three lines are the STATUS block.
 - **Shared file = one owner.** Others write a tagged request note (`<file> request #n (topic)`); the owner answers with the same tag.
 - Evidence or explicit unknown for every claim (file, offset, bytes); confidence H/M/L; no invented names.
 - **One address, one name.** No raw segment:offset in native code; names come from one generated header shared by the decompilation and the port.

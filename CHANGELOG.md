@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.6 — 2026-11-02 (agent communication SOP: machine-first lanes)
+- METHOD.md: new section **Agent communication**: return shape in the standing lane definition; brief = fixed-field packet; return = `DID` / `CHANGED` / `NEXT` + result-file path (= heartbeat = STATUS line); detail level per task class; reads through files, panes filtered and CLI tips off; fixed-header handoffs; lane-or-not question; no stickies/Remote Control on lanes; measure tokens + time per lane cycle before/after.
+- File protocol: one bullet for the lane return shape.
+- templates/FOREMAN_example_*.md: the SOP as a header block under the kickoff-rulings block, so a copied brief carries it.
+- Source: the owner 2026-11-02 via the Gold Box graph (SilverMachine FOREMAN.md "Agent communication SOP").
+
 ## v0.2.5 — 2026-10-30 (branch coverage from snapshots: the verification loop)
 - docs/BRANCH_COVERAGE.md (new): the three stages (decode, play-API rebuild, verification loop); the reduction (astronomical -> exhaustive low thousands -> ~1,000 first pass); the ledger from the decoded scripts; a run = restore at a branch point, one option, play to the next checkpoint, 120 s budget; no model between clicks; the only cheat is the party (never past decisions, dialogue, navigation); the compatibility principle (unsnapshottable = port bug); bytes/pixels as a small fixed gate; the deliverable is a skill ("test my game by play-through"). Status: being proven on Secret of the Silver Blades (Gold Box Unified GU-51..53).
 - METHOD.md Acceptance: one bullet pointing at it.
