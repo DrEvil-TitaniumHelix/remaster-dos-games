@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.5 — 2026-10-30 (branch coverage from snapshots: the verification loop)
+- docs/BRANCH_COVERAGE.md (new): the three stages (decode, play-API rebuild, verification loop); the reduction (astronomical -> exhaustive low thousands -> ~1,000 first pass); the ledger from the decoded scripts; a run = restore at a branch point, one option, play to the next checkpoint, 120 s budget; no model between clicks; the only cheat is the party (never past decisions, dialogue, navigation); the compatibility principle (unsnapshottable = port bug); bytes/pixels as a small fixed gate; the deliverable is a skill ("test my game by play-through"). Status: being proven on Secret of the Silver Blades (Gold Box Unified GU-51..53).
+- METHOD.md Acceptance: one bullet pointing at it.
+
 ## v0.2.4 — 2026-10-28 (kickoff rulings are the method's, never the brief's)
 - METHOD.md: new section **Kickoff rulings**: nine questions (oracle level, verification workflows, product form, lane cap, model roles, build start, Plus layer, platform profile, orchestration = Herdr) with the method default for each; the Foreman copies the table into RULINGS.md at Phase 0; a FOREMAN brief never pre-answers one, and if it does the method default wins and the conflict is recorded. Cause: a brief that declared an emulator the oracle made a survey lane launch emulators the method calls optional.
 - templates/FOREMAN_example_*.md: the same rule as a header block above the mission, so a copied brief carries it.
